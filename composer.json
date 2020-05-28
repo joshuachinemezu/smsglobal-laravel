@@ -1,5 +1,5 @@
 {
-	"name": "joshuachinemezu/smsglobal",
+	"name": "joshuachinemezu/smsglobal-laravel",
 	"description": "A Laravel packaage for integrating SmsGlobal",
 	"authors": [
 		{
@@ -8,5 +8,10 @@
 		}
 	],
 	"minimum-stability": "dev",
+	"autoload": {
+		"psr-4": {
+			"JoshuaChinemezu\\SmsGlobal\\": "src/"
+		}
+	},
 	"require": {}
 }

@@ -23,6 +23,10 @@ class SmsGlobalServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $config = realpath(__DIR__ . '/../config/smsglobal.php');
+
+        $this->publishes([
+            $config => config_path('smsglobal.php')
+        ]);
     }
 }
