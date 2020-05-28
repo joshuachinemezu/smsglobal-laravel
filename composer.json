@@ -1,0 +1,12 @@
+{
+	"name": "joshuachinemezu/smsglobal",
+	"description": "A Laravel packaage for integrating SmsGlobal",
+	"authors": [
+		{
+			"name": "Joshua Chinemezu",
+			"email": "joshuachinemezu@gmail.com"
+		}
+	],
+	"minimum-stability": "dev",
+	"require": {}
+}
