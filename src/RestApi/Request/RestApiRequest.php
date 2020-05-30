@@ -4,7 +4,6 @@ namespace JoshuaChinemezu\SmsGlobal\RestApi\Request;
 
 use Illuminate\Support\Facades\Config;
 use GuzzleHttp\Client;
-use JoshuaChinemezu\SmsGlobal\RestApi\Excecption\RestApiException;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Exception\RequestException;
 
