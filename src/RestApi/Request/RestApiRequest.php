@@ -4,8 +4,13 @@ namespace JoshuaChinemezu\SmsGlobal\RestApi\Request;
 
 use Illuminate\Support\Facades\Config;
 use GuzzleHttp\Client;
+use JoshuaChinemezu\SmsGlobal\RestApi\Excecption\RestApiException;
+use GuzzleHttp\Psr7;
+use GuzzleHttp\Exception\RequestException;
+use Illuminate\Http\JsonResponse;
+
 /*
- * This file is part of the Laravel Rave package.
+ * This file is part of the SmsGlobal Laravel Package.
  *
  * (c) Joshua Chinemezu <joshuachinemezu@gmail.com>
  *
@@ -90,35 +95,79 @@ class RestApiRequest
 
     private function setRequestOptions($action, $method)
     {
-        $this->method = 'GET';
+        $this->method = $method;
         $this->action = $action;
         $this->url = "{$this->baseUrl}/{$this->action}";
     }
 
-    public function get($action)
+    public function get($action, $queryOptions = [])
     {
         $this->setRequestOptions($action, 'GET');
-        $request = $this->client->get($this->url, [
-            'headers' => $this->getAuthorisationHeader(),
-        ], array());
+        try {
+            $request = $this->client->get($this->url, [
+                'headers' => $this->getAuthorisationHeader(),
+                'query' => $queryOptions
+            ],  array());
+        } catch (RequestException $e) {
+            if ($e->hasResponse()) {
+                return $this->getJsonResponse($e->getResponse());
+            }
+            return Psr7\str($e->getRequest());
+        }
         return $this->getJsonResponse($request);
     }
 
-    public function post($action)
+    public function post($action, $formData = [])
     {
         $this->setRequestOptions($action, 'POST');
-        $request = $this->client->post($this->url, [
-            'headers' => $this->getAuthorisationHeader(),
-        ], array());
+        try {
+            $request = $this->client->post($this->url, [
+                'form_params' => $formData,
+                'headers' => $this->getAuthorisationHeader(),
+            ], array());
+        } catch (RequestException $e) {
+            if ($e->hasResponse()) {
+                return $this->getJsonResponse($e->getResponse());
+            }
+            return Psr7\str($e->getRequest());
+        }
+
+        return $this->getJsonResponse($request);
+    }
+
+    public function put($action, $optionData = [])
+    {
+        $this->setRequestOptions($action, 'PUT');
+        try {
+            $request = $this->client->put($this->url, [
+                'form_params' => $optionData,
+                'headers' => $this->getAuthorisationHeader(),
+            ], array());
+        } catch (RequestException $e) {
+            if ($e->hasResponse()) {
+                return $this->getJsonResponse($e->getResponse());
+            }
+            return Psr7\str($e->getRequest());
+        }
+
         return $this->getJsonResponse($request);
     }
 
     public function delete($action)
     {
+
         $this->setRequestOptions($action, 'DELETE');
-        $request = $this->client->delete($this->url, [
-            'headers' => $this->getAuthorisationHeader(),
-        ], array());
+        try {
+            $request = $this->client->delete($this->url, [
+                'headers' => $this->getAuthorisationHeader(),
+            ], array());
+        } catch (RequestException $e) {
+            if ($e->hasResponse()) {
+                return $this->getJsonResponse($e->getResponse());
+            }
+            return Psr7\str($e->getRequest());
+        }
+
         return $this->getJsonResponse($request);
     }
 

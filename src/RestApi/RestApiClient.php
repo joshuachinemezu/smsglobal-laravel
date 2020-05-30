@@ -75,8 +75,72 @@ class RestApiClient
         $this->request = new RestApiRequest($this->apiKey, $this->secretKey, $this->hashAlgo);
     }
 
-    public function getAllContactGroups()
+    /**
+     * Get the auto top-up information associated to the authenticated account.
+     */
+    public function getAutoTopUpInfo()
     {
-        return $this->request->get('group');
+        return $this->request->get('auto-topup');
+    }
+
+    /**
+     * Delete a contact
+     * @param integer $id
+     * @return json
+     */
+    public function deleteContact($id)
+    {
+        return $this->request->delete("contact/{$id}");
+    }
+
+    /**
+     * Get the contact as identified by the given id.
+     * @param integer $id
+     * @return json
+     */
+    public function getContactByID($id)
+    {
+        return $this->request->get("contact/{$id}");
+    }
+
+    /**
+     * Update the contact as identified by the given id. You can only update the
+     * default fields associated with each contact.
+     * @param integer $id
+     * @return json
+     */
+    public function updateContactByID($id)
+    {
+        return $this->request->put("contact/{$id}");
+    }
+
+    /**
+     * Get a list of all contact groups.
+     * @param array $queryOptions
+     * @return json
+     */
+    public function getAllContactGroups($queryOptions = [])
+    {
+        return $this->request->get('group', $queryOptions);
+    }
+
+    /**
+     * Create a new contact group.
+     * @param array $formData
+     * @return json
+     */
+    public function createContactGroup($formData)
+    {
+        return $this->request->post('group', $formData);
+    }
+
+    public function getAllDedicatedNumber()
+    {
+        return $this->request->get('dedicated-number');
+    }
+
+    public function getAllOutgoingSms()
+    {
+        return $this->request->get('sms');
     }
 }
