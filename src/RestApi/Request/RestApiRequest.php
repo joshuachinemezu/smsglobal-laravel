@@ -153,6 +153,24 @@ class RestApiRequest
         return $this->getJsonResponse($request);
     }
 
+    public function patch($action, $optionData = [])
+    {
+        $this->setRequestOptions($action, 'PATCH');
+        try {
+            $request = $this->client->patch($this->url, [
+                'form_params' => $optionData,
+                'headers' => $this->getAuthorisationHeader(),
+            ], array());
+        } catch (RequestException $e) {
+            if ($e->hasResponse()) {
+                return $this->getJsonResponse($e->getResponse());
+            }
+            return Psr7\str($e->getRequest());
+        }
+
+        return $this->getJsonResponse($request);
+    }
+
     public function delete($action)
     {
 
