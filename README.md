@@ -1,7 +1,6 @@
-
 # SmsGlobal Laravel Package
 
-Laravel 5, 6 and 7 Package for SmsGlobal 
+Laravel 5, 6 and 7 Package for SmsGlobal
 
 > A Laravel Package for integrating SmsGlobal seamlessly
 
@@ -18,12 +17,10 @@ composer require joshuachinemezu/smsglobal-laravel
 Or add the following line to the require block of your `composer.json` file.
 
 ```
-"joshuachinemezu/smsglobal-laravel": "1.0.*"
+"joshuachinemezu/smsglobal-laravel": "0.1.*"
 ```
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
-
-
 
 Once the package is installed, you need to register the service provider. Open up `config/app.php` and add the following to the `providers` key.
 
@@ -37,7 +34,7 @@ Once the package is installed, you need to register the service provider. Open u
 
 > If you use **Laravel >= 5.5** you can skip this step and go to [**`configuration`**](https://github.com/joshuachinemezu/smsglobal-laravel#configuration)
 
-* `JoshuaChinemezu\SmsGlobal\SmsGlobalServiceProvider::class`
+- `JoshuaChinemezu\SmsGlobal\SmsGlobalServiceProvider::class`
 
 Also, register the Facade like so:
 
@@ -124,8 +121,8 @@ Open your .env file and add your api key and secret key which can be generated f
 SMSGLOBAL_API_KEY=xxxxxxxxxxxxx
 SMSGLOBAL_SECRET_KEY=xxxxxxxxxxxxx
 ```
-*If you are using a hosting service like heroku, remember to add the above details to your configuration variables.*
 
+_If you are using a hosting service like heroku, remember to add the above details to your configuration variables._
 
 ```php
 <?php
@@ -142,7 +139,7 @@ class SmsController extends Controller
 {
 
     /**
-     * Get 
+     * Get
      * @return json
      */
     public function getSmsGlobalDedicatedNumbers()
@@ -150,7 +147,7 @@ class SmsController extends Controller
         $smsglobal = new RestApiClient;
         return $smsglobal->getAllDedicatedNumbers();
     }
-    
+
      /**
      * This method can be implemented in a Queue - this is just an example
      * @return json
@@ -167,6 +164,7 @@ class SmsController extends Controller
 ```
 
 Explanation of the methods this package provides.
+
 ```php
 <?php
 
@@ -184,7 +182,7 @@ smsglobal()->getAutoTopUpInfo();
 /**
  *  Delete a contact
  * @param integer $id
- * @return json 
+ * @return json
  */
 $smsglobal->deleteContact($id);
 
@@ -197,7 +195,7 @@ smsglobal()->deleteContact($id);
 /**
  *  Get the contact as identified by the given id.
  * @param integer $id
- * @return json 
+ * @return json
  */
 $smsglobal->getContactByID($id);
 
@@ -211,7 +209,7 @@ smsglobal()->getContactByID($id);
  *  Update the contact as identified by the given id. You can only update the
  * default fields associated with each contact.
  * @param integer $id
- * @return json 
+ * @return json
  */
 $smsglobal->updateContactByID($id);
 
@@ -225,7 +223,7 @@ smsglobal()->updateContactByID($id);
  *  Get a list of all contact groups.
  * @param array $queryOptions
  * See https://www.smsglobal.com/rest-api/ - /v2/group - GET
- * @return json 
+ * @return json
  */
 $smsglobal->getAllContactGroups($queryOptions);
 
@@ -239,7 +237,7 @@ smsglobal()->getAllContactGroups($queryOptions);
  *  Create a new contact group.
  * @param array $formData
  * See https://www.smsglobal.com/rest-api/ - /v2/group - POST
- * @return json 
+ * @return json
  * $formData = [
  *      "name" => "Joshua Group",
  *      "keyword" => "smsgroup",
@@ -259,7 +257,7 @@ smsglobal()->createContactGroup($formData);
  *  Create a new contact group.
  * @param integer $groupId
  * @param array $formData
- * @return json 
+ * @return json
  * $formData = [
  *      "msisdn" => "Joshua Contact",
  *      "givenName" => "Joshua",
@@ -278,7 +276,7 @@ smsglobal()->createContact($groupId, $formData);
  *  Get a list of all contacts in a group.
  * @param integer $groupId
  * @param array $filters
- * @return json 
+ * @return json
  * $filters = [
  *      "offset" => 1,
  *      "limit" => 20,
@@ -296,7 +294,7 @@ smsglobal()->getContactsByGroupID($groupId, $filters);
 /**
  *  Delete a contact group
  * @param integer $id
- * @return json 
+ * @return json
  */
 $smsglobal->deleteContactGroup($id);
 
@@ -309,7 +307,7 @@ smsglobal()->deleteContactGroup($id);
 /**
  *  Get the contact group as identified by the given id.
  * @param integer $id
- * @return json 
+ * @return json
  */
 $smsglobal->getContactGroupByID($id);
 
@@ -328,7 +326,7 @@ smsglobal()->getContactGroupByID($id);
  *      "keyword" => "",
  *       ... More options on https://www.smsglobal.com/rest-api/
  *   ]
- * @return json 
+ * @return json
  */
 $smsglobal->updateGroupFieldByID($id, $param);
 
@@ -340,7 +338,7 @@ smsglobal()->updateGroupFieldByID($id, $param);
 
 /**
  *  View list of dedicated numbers
- * @return json 
+ * @return json
  */
 $smsglobal->getAllDedicatedNumbers();
 
@@ -358,7 +356,7 @@ smsglobal()->getAllDedicatedNumbers();
  *      "offset" => 1,
  *      "limit" => 20,
  *   ]
- * @return json 
+ * @return json
  */
 $smsglobal->getAllOptedOutNumbers($filters);
 
@@ -372,7 +370,7 @@ smsglobal()->getAllOptedOutNumbers($filters);
  *  Opt out mobile numbers
  * @param array $mobileNumbers
  *  $mobileNumbers = [xxx. xxx, xxx]
- * @return json 
+ * @return json
  */
 $smsglobal->optOutMobileNumbers($mobileNumbers);
 
@@ -386,7 +384,7 @@ smsglobal()->optOutMobileNumbers($mobileNumbers);
  *  Validate mobile numbers for opt out
  * @param array $mobileNumbers
  *  $mobileNumbers = [xxx. xxx, xxx]
- * @return json 
+ * @return json
  */
 $smsglobal->validateOptOutMobileNumbers($mobileNumbers);
 
@@ -401,7 +399,7 @@ smsglobal()->validateOptOutMobileNumbers($mobileNumbers);
  *  Opt in a mobile number
  * @param integer $mobileNumber
  *  $mobileNumbers = xxx
- * @return json 
+ * @return json
  */
 $smsglobal->optInMobileNumber($mobileNumber);
 
@@ -415,7 +413,7 @@ smsglobal()->optInMobileNumber($mobileNumber);
  *  Opt in a mobile number
  * @param integer $mobileNumber
  *  $mobileNumbers = xxx
- * @return json 
+ * @return json
  */
 $smsglobal->optInMobileNumber($mobileNumber);
 
@@ -427,7 +425,7 @@ smsglobal()->optInMobileNumber($mobileNumber);
 
 /**
  *  View list of shared pools
- * @return json 
+ * @return json
  */
 $smsglobal->getAllSharedPools();
 
@@ -440,7 +438,7 @@ smsglobal()->getAllSharedPools();
 /**
  *  View details of a shared pool
  * @param integer $id
- * @return json 
+ * @return json
  */
 $smsglobal->getSharedPoolByID($id);
 
@@ -460,7 +458,7 @@ smsglobal()->getSharedPoolByID($id);
  *      "status" => "delivered",
  *      ... More option https://www.smsglobal.com/rest-api/ - /v2/sms - GET
  *   ]
- * @return json 
+ * @return json
  */
 $smsglobal->getAllOutGoingMessage($filters);
 
@@ -477,7 +475,7 @@ smsglobal()->getAllOutGoingMessage($filters);
  *      "message" => "Hello",
  *      ... More option https://www.smsglobal.com/rest-api/ - /v2/sms - POST
  *   ]
- * @return json 
+ * @return json
  */
 $smsglobal->sendMessage($postData);
 
@@ -490,7 +488,7 @@ smsglobal()->sendMessage($postData);
 /**
  *  Delete outgoing message
  * @param integer $id
- * @return json 
+ * @return json
  */
 $smsglobal->deleteOutGoingMessage($id);
 
@@ -503,7 +501,7 @@ smsglobal()->deleteOutGoingMessage($id);
 /**
  * View details of an outgoing message
  * @param integer $id
- * @return json 
+ * @return json
  */
 $smsglobal->getOutGoingMessageByID($id);
 
@@ -515,13 +513,13 @@ smsglobal()->getOutGoingMessageByID($id);
 
 /**
  * View list of incoming messages
- * @param arrray $filters' 
+ * @param arrray $filters'
  *  $filters = [
  *      "offset" => 1,
  *      "limit" => 20,
  *      ... More option https://www.smsglobal.com/rest-api/ - /v2/sms-incoming - GET
  *   ]
- * @return json 
+ * @return json
  */
 $smsglobal->getAllIncomingMessage($filters);
 
@@ -533,13 +531,13 @@ smsglobal()->getAllIncomingMessage($filters);
 
 /**
  * View list of incoming messages
- * @param arrray $filters' 
+ * @param arrray $filters'
  *  $filters = [
  *      "offset" => 1,
  *      "limit" => 20,
  *      ... More option https://www.smsglobal.com/rest-api/ - /v2/sms-incoming - GET
  *   ]
- * @return json 
+ * @return json
  */
 $smsglobal->getAllIncomingMessage($filters);
 
@@ -552,7 +550,7 @@ smsglobal()->getAllIncomingMessage($filters);
 /**
  * Delete incoming message
  * @param integer $id
- * @return json 
+ * @return json
  */
 $smsglobal->deleteIncomingMessage($id);
 
@@ -565,7 +563,7 @@ smsglobal()->deleteIncomingMessage($id);
 /**
  * View details of an incoming message
  * @param integer $id
- * @return json 
+ * @return json
  */
 $smsglobal->getIncomingMessageByID($id);
 
@@ -577,7 +575,7 @@ smsglobal()->getIncomingMessageByID($id);
 
 /**
  * Get the authenticated account's billing details.
- * @return json 
+ * @return json
  */
 $smsglobal->getBillingDetails();
 
@@ -591,7 +589,7 @@ smsglobal()->getBillingDetails();
  * Update the authenticated account's billing details.
  * @param array $params
  * See https://www.smsglobal.com/rest-api/ - /v2/user/billing-details - PUT
- * @return json 
+ * @return json
  */
 $smsglobal->updateBillingDetails($params);
 
@@ -603,7 +601,7 @@ smsglobal()->updateBillingDetails($params);
 
 /**
  * Get the authenticated account's contact details.
- * @return json 
+ * @return json
  */
 $smsglobal->getContactDetails();
 
@@ -617,7 +615,7 @@ smsglobal()->getContactDetails();
  * Get the authenticated account's billing details.
  * @param array $params
  * See https://www.smsglobal.com/rest-api/ - /v2/user/billing-details - PUT
- * @return json 
+ * @return json
  */
 $smsglobal->updateContactDetails($params);
 
@@ -629,7 +627,7 @@ smsglobal()->updateContactDetails($params);
 
 /**
  * View the account balance
- * @return json 
+ * @return json
  */
 $smsglobal->getBalance();
 
@@ -641,8 +639,8 @@ smsglobal()->getBalance();
 
 /**
  * Get the low balance alerts information associated to the authenticated
- * account. 
- * * @return json 
+ * account.
+ * * @return json
  */
 $smsglobal->getLowBalanceAlert();
 
@@ -656,7 +654,7 @@ smsglobal()->getLowBalanceAlert();
  * Update the authenticated account's low balance alerts information.
  * @param array $params
  * See https://www.smsglobal.com/rest-api/ - /v2/user/low-balance-alerts - PUT
- * * @return json 
+ * * @return json
  */
 $smsglobal->updateLowAlertBalance($params);
 
@@ -670,7 +668,7 @@ smsglobal()->updateLowAlertBalance($params);
  * Create sub account
  * @param array $params
  * See https://www.smsglobal.com/rest-api/ - /v2/user/low-balance-alerts - POST
- * * @return json 
+ * * @return json
  */
 $smsglobal->createSubAccount($params);
 
@@ -684,7 +682,7 @@ smsglobal()->createSubAccount($params);
  * Get the authenticated account's verified numbers.
  * @param array $params
  * See https://www.smsglobal.com/rest-api/ - /v2/user/verified-numbers - GET
- * * @return json 
+ * * @return json
  */
 $smsglobal->getVerifiedNumbers($params);
 
@@ -695,15 +693,14 @@ smsglobal()->getVerifiedNumbers($params);
 
 ```
 
-
 ## Todo
 
-* Add SMPP
-* Add SOAP
-* Add MMS API
-* Add Whatsapp API
-* Add Queue and Track Outgoing SMS
-* Add Comprehensive Tests
+- Add SMPP
+- Add SOAP
+- Add MMS API
+- Add Whatsapp API
+- Add Queue and Track Outgoing SMS
+- Add Comprehensive Tests
 
 ## Contributing
 
