@@ -1,5 +1,10 @@
 # SmsGlobal Laravel Package
 
+[![Latest Stable Version](https://poser.pugx.org/joshuachinemezu/smsglobal-laravel/v/stable.svg)](https://packagist.org/packages/joshuachinemezu/smsglobal-laravel)
+[![License](https://poser.pugx.org/joshuachinemezu/smsglobal-laravel/license)](//packagist.org/packages/joshuachinemezu/smsglobal-laravel)
+[![Quality Score](https://img.shields.io/scrutinizer/g/joshuachinemezu/smsglobal-laravel.svg?style=flat-square)](https://scrutinizer-ci.com/g/joshuachinemezu/smsglobal-laravel)
+[![Total Downloads](https://poser.pugx.org/joshuachinemezu/smsglobal-laravel/downloads)](//packagist.org/packages/joshuachinemezu/smsglobal-laravel)
+
 Laravel 5, 6 and 7 Package for SmsGlobal
 
 > A Laravel Package for integrating SmsGlobal seamlessly
