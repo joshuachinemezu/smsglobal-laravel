@@ -13,7 +13,10 @@ class SmsGlobalServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('smsglobal-laravel', function () {
+
+            return new RestApi\RestApiClient;
+        });
     }
 
     /**
