@@ -20,10 +20,6 @@ class RestApiClient
     protected $debug;
     protected $hashAlgo;
     protected $request;
-    /**
-     * Issue Secret Key from your Paystack Dashboard
-     * @var string
-     */
 
 
     public function __construct()

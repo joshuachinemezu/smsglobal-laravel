@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Laravel Rave package.
+ * This file is part of the SmsGlobal Laravel package.
  *
  * (c) Joshua Chinemezu <joshuachinemezu@gmail.com>
  *
