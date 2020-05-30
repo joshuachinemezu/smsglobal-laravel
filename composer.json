@@ -1,6 +1,24 @@
 {
 	"name": "joshuachinemezu/smsglobal-laravel",
 	"description": "A Laravel packaage for integrating SmsGlobal",
+	"keywords": [
+		"php",
+		"github",
+		"laravel",
+		"Open Source",
+		"sms",
+		"joshuachinemezu",
+		"SmsGlobal",
+		"Sms Integration",
+		"Sms gateway",
+		"bulk sms",
+		"text messaging",
+		"sms marketing",
+		"smsglobal",
+		"sms api",
+		"smsglobal.com",
+		"laravel 5"
+	],
 	"authors": [
 		{
 			"name": "Joshua Chinemezu",
@@ -11,6 +29,16 @@
 	"autoload": {
 		"psr-4": {
 			"JoshuaChinemezu\\SmsGlobal\\": "src/"
+		}
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"JoshuaChinemezu\\SmsGlobal\\SmsGlobalServiceProvider"
+			],
+			"aliases": {
+				"SmsGlobal": "JoshuaChinemezu\\SmsGlobal\\Facades\\SmsGlobal"
+			}
 		}
 	},
 	"require": {}
