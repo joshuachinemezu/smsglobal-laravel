@@ -17,7 +17,7 @@ composer require joshuachinemezu/smsglobal-laravel
 Or add the following line to the require block of your `composer.json` file.
 
 ```
-"joshuachinemezu/smsglobal-laravel": "0.1.*"
+"joshuachinemezu/smsglobal-laravel": "^0.1.*"
 ```
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
